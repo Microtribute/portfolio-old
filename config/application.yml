@@ -1,0 +1,97 @@
+# Application settings available as Rails.application.config.settings
+#
+# All values in this file are namespaced under Rails.application.config.settings
+# and will not conflict with other configuration values in Rails.application.config.
+# Settings are manually applied to the correct config var as needed in specific initializers.
+# e.g. config/initializers/devise.rb
+
+common: &common
+  # Downcased and trimmed app name for namespaces.
+  # Safest to start with a letter rather than a number.
+  # See locales/en.yml for setting your app's user facing brand name.
+  app_name: 'portfolio'
+
+  social:
+    facebook: 'https://www.facebook.com/nahrae.jin'
+    twitter: 'https://twitter.com/tollangi'
+    google_plus: 'https://plus.google.com/+JoeJohnstonSF'
+    linkedin: 'http://www.linkedin.com/in/startupjoe'
+
+  contact:
+    name: 'Nahrae'
+    email: 'jinnahrae@gmail.com'
+    phone: '555-555-5555'
+
+  session:
+    key: '_portfolio_session'
+    expire_after: <%= 30.days %>
+
+  rack:
+    # Timeout request after 20 seconds
+    timeout: 20
+
+  mail:
+    layout: 'emails/email'
+    from: 'jinnahrae@gmail.com'
+
+
+# Default ENV vars.
+# Set to development values for convenience and override in production by setting ENV on the server.
+# As a best practice, do not put production values in this file for security reasons.
+default_env: &default_env
+  # From address to use when sending email
+  MAIL_HOST: 'nahrae-portfolio.herokuapp.com'
+
+  # Host used to determine direct requests vs CDN.
+  # See RobotsController.
+  CANONICAL_HOST: 'nahrae-portfolio.herokuapp.com'
+
+  AUTH_FACEBOOK_KEY: '1568626176714459'
+  AUTH_FACEBOOK_SECRET: '876ef200afbd90c203ded30d780b45c4'
+  AUTH_TWITTER_KEY: 'hbcu8JvAB1FftWw7c3oog'
+  AUTH_TWITTER_SECRET: 'uTspycZ4T7QAeA9QLGBb1zoLrR6K7ChBPdYt8F7nZc'
+
+  MAIL_PROVIDER_ADDRESS: 'smtp.elasticemail.com'
+  MAIL_PROVIDER_USERNAME: 'a0f809cf-6940-49be-a67c-7fae8713026f'
+  MAIL_PROVIDER_PASSWORD: 'a0f809cf-6940-49be-a67c-7fae8713026f'
+
+  # Devise password encryption keys.
+  # Channging the keys will invalidate user passwords,
+  # forcing users to use the forgot password feature.
+  # TODO: make new keys with `rake secret`
+  DEVISE_SECRET_KEY: '420ce6016d0846f1e0c6b5b07b34a04676d0a8144c0ec57f0755541408deb8f7de451925461d784403c73dc32f8ac436410e44d4144e89e58953d3e6c257c288'
+  DEVISE_PEPPER:     '43183fb5ed7068d775ee54275f61e74c55aeb4ba075cdfccad89835885bc9d6b4dd3cc8b73f8b13002ec2300540e76c2c9a37c79751990b92cb5e9cbd7eed669'
+
+  # Signed cookie encryption key.
+  # TODO: make new key with `rake secret`
+  SECRET_KEY_BASE:   '05ff8d219932f6957a650ce2a646d3ad1f598b39d43d101b97755115f1ec74d467b0dd7840294992694eb2c0bc41153f1124bb5bc9fbfb215f5bb0252fc1f610'
+
+  # Redis server used by Sidekiq, cache, etc.
+  REDIS_URL: 'redis://localhost:6379/0'
+
+  # Airbrake/Errbit configuration
+  AIRBRAKE_API_KEY: ''
+  AIRBRAKE_HOST: ''
+
+
+development:
+  <<: *common
+  env:
+    <<: *default_env
+    ALLOW_EMAIL_PREVIEW: true
+
+test:
+  <<: *common
+  env:
+    <<: *default_env
+
+staging:
+  <<: *common
+  env:
+    <<: *default_env
+
+production:
+  <<: *common
+  env:
+    # Set dummy key so rake assets:precompile succeeds
+    DEVISE_SECRET_KEY: '420ce6016d0846f1e0c6b5b07b34a04676d0a8144c0ec57f0755541408deb8f7de451925461d784403c73dc32f8ac436410e44d4144e89e58953d3e6c257c288'

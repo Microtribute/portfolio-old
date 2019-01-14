@@ -1,0 +1,19 @@
+- @logo_url = "#{ENV['MAIL_HOST']}/img/mobile-web-design.png"
+- @image_url = "#{ENV['MAIL_HOST']}/img/our-mobile-development-capabilities.jpg"
+
+- content_for :title do
+	Hello #{Rails.application.config.settings.contact.name}!
+
+%p=@contact_info[:message]
+
+%p From,
+%strong
+	=@contact_info[:name]
+%br
+%strong
+	@
+	=@contact_info[:email]
+%br
+%strong
+	&#9742;
+	=@contact_info[:phone]

@@ -1,0 +1,99 @@
+- content_for :contact_form do
+  .row
+    .col-lg-12.text-center
+      %h2 Contact Me
+      %hr.star-primary/
+  .row
+    .col-lg-8.col-lg-offset-2
+      = simple_form_for @contact_info, remote: true do |f|
+        .row.control-group
+          .form-group.col-xs-12.floating-label-form-group.controls
+            = f.input :name, "data-validation-required-message" => "Please enter your name.", :placeholder => "Name", :required => "", :type => "text", class: 'form-control', label: false
+        .row.control-group
+          .form-group.col-xs-12.floating-label-form-group.controls
+            = f.input :email, "data-validation-required-message" => "Please enter your name.", :placeholder => "Email", :required => "", :type => "email", class: 'form-control', label: false
+        .row.control-group
+          .form-group.col-xs-12.floating-label-form-group.controls
+            = f.input :phone, "data-validation-required-message" => "Please enter your name.", :placeholder => "Phone", :required => "", :type => "text", class: 'form-control', label: false
+        .row.control-group
+          .form-group.col-xs-12.floating-label-form-group.controls
+            = f.input :message, "data-validation-required-message" => "Please enter your name.", :placeholder => "Message", 
+              :required => "", :type => "text", class: 'form-control', label: false, as: :text, 
+              input_html: {:rows => "5"}
+        %br/
+        #success
+        .row
+          .form-group.col-xs-12
+            %button.btn.btn-success.btn-lg{:type => "submit"} Send
+ 
+
+- content_for :skills do
+  .col-lg-12.text-center
+    %h2 I am an Expert at
+    %hr.star-primary/
+  %ul#demo-accordion{"data-options" => "{\"theme\": \"silver\", \"active\": 0, \"sectionSpacing\": 4, \"orientation\": \"horizontal\", \"responsive\": true, \"height\": 200, \"headerFontSize\": 1.2}", "data-role" => "z-accordion", style: "margin: 0 auto;"}
+    %li
+      %h3 Back end
+      %div
+        =image_tag("/img/skills/img_front-end.jpg", class: 'img-responsive')
+        =image_tag("/img/skills/img_front-end.jpg", class: 'img-responsive')
+    %li
+      %h3 Front end
+      %div=image_tag("/img/skills/img_front-end.jpg", class: 'img-responsive')
+    %li
+      %h3 Databases
+      %div=image_tag("/img/skills/img_database.jpg", class: 'img-responsive')
+    %li
+      %h3 Tools
+      %div=image_tag("/img/skills/img_tools.jpg", class: 'img-responsive')
+    %li
+      %h3 Testing
+      %div=image_tag("/img/skills/img_qa.jpg", class: 'img-responsive')
+    %li
+      %h3 Hosting
+      %div=image_tag("/img/skills/img_hosting.jpg", class: 'img-responsive')
+    %li
+      %h3 Collaborations
+      %div=image_tag("/img/skills/img_collaborations.jpg", class: 'img-responsive')
+
+.row
+  .col-lg-12.text-center
+    %h2 Successful Projects
+    %hr.star-primary/
+.row
+  .col-sm-4.portfolio-item
+    %a.portfolio-link{"data-toggle" => "modal", :href => "#portfolioModal1"}
+      .caption
+        .caption-content
+          %i.fa.fa-search-plus.fa-3x
+      %img.img-responsive{:alt => "", :src => "img/portfolio/cabin.png"}/
+  .col-sm-4.portfolio-item
+    %a.portfolio-link{"data-toggle" => "modal", :href => "#portfolioModal2"}
+      .caption
+        .caption-content
+          %i.fa.fa-search-plus.fa-3x
+      %img.img-responsive{:alt => "", :src => "img/portfolio/cake.png"}/
+  .col-sm-4.portfolio-item
+    %a.portfolio-link{"data-toggle" => "modal", :href => "#portfolioModal3"}
+      .caption
+        .caption-content
+          %i.fa.fa-search-plus.fa-3x
+      %img.img-responsive{:alt => "", :src => "img/portfolio/circus.png"}/
+  .col-sm-4.portfolio-item
+    %a.portfolio-link{"data-toggle" => "modal", :href => "#portfolioModal4"}
+      .caption
+        .caption-content
+          %i.fa.fa-search-plus.fa-3x
+      %img.img-responsive{:alt => "", :src => "img/portfolio/foodcircles.png"}/
+  .col-sm-4.portfolio-item
+    %a.portfolio-link{"data-toggle" => "modal", :href => "#portfolioModal5"}
+      .caption
+        .caption-content
+          %i.fa.fa-search-plus.fa-3x
+      %img.img-responsive{:alt => "", :src => "img/portfolio/safe.png"}/
+  .col-sm-4.portfolio-item
+    %a.portfolio-link{"data-toggle" => "modal", :href => "#portfolioModal6"}
+      .caption
+        .caption-content
+          %i.fa.fa-search-plus.fa-3x
+      %img.img-responsive{:alt => "", :src => "img/portfolio/submarine.png"}/

@@ -1,0 +1,9 @@
+- content_for :title do
+  Hello #{Rails.application.config.settings.contact.name}!
+
+=@contact_info[:message]
+
+From,
+=@contact_info[:name]
+="@: #{@contact_info[:email]}"
+="&#9742; #{@contact_info[:phone]}"

@@ -1,0 +1,390 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    %title WEB / MOBILE Developer
+    / Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/
+    %link{:href => "/css/bootstrap.min.css", :rel => "stylesheet"}/
+    / Custom CSS
+    %link{:href => "/css/freelancer.css", :rel => "stylesheet"}/
+    / Custom Fonts
+    %link{:href => "font-awesome/css/font-awesome.min.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "https://fonts.googleapis.com/css?family=Montserrat:400,700", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic", :rel => "stylesheet", :type => "text/css"}/
+
+
+    = javascript_include_tag 'application'
+    = stylesheet_link_tag 'jquery.rambling.slider'
+    = csrf_meta_tags
+
+
+    %link{:href => "/css/zozo.accordion.min.css", :rel => "stylesheet"}/
+    %script{:src => "/js/zozo.accordion.min.js"}
+
+
+    / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    / WARNING: Respond.js doesn't work if you view the page via file://
+    /[if lt IE 9] 
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  %body#page-top.index
+    / Navigation
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        / Brand and toggle get grouped for better mobile display
+        .navbar-header.page-scroll
+          %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => "#page-top"} WEB / MOBILE Developer
+        / Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li.hidden
+              %a{:href => "#page-top"}
+            %li.page-scroll
+              %a{:href => "#portfolio"} Portfolio
+            %li.page-scroll
+              %a{:href => "#about"} About
+            %li.page-scroll
+              %a{:href => "#contact"} Contact
+        / /.navbar-collapse
+      / /.container-fluid
+    / Header
+    %header
+      .container
+        .row
+          .col-lg-12.hidden
+            %img.img-responsive{:alt => "", :src => "img/profile.png"}/
+            .intro-text
+              %span.name Web / Mobile
+              %hr.star-light/
+              %span.skills Ruby on Rails - Mobile application
+
+    / Skills Section
+    %section#skills
+      .container
+        = yield :skills
+
+    / Portfolio Grid Section
+    %section#portfolio
+      .container
+        = yield
+
+
+
+    / About Section
+    %section#about.success
+      .container
+        .row
+          .col-lg-12.text-center
+            %h2 About Me
+            %hr.star-light/
+        .row
+          .col-lg-8.col-lg-offset-2
+            .page
+              .header
+                %h3 Looking for a Rails or iOS Developer?
+              .content
+                %p I specialise in building web and iOS applications, with a leaning towards Ruby for server-side stuff.
+                %p Whether you’re looking to realise an idea, or build an app from a spec, drop me an email, and I’ll see if I can help.
+                
+                %h3#contact-me Contact Me
+                %p Send me an email explaining a little about the project and what your budget is. I’ll have a look and let you know if I think I’m the appropriate person to help you out. If it turns out that someone else would be better suited, I may be able to recommend others.
+                %p I rarely take on work for equity - cold, hard cash pays my bills.
+                %p
+                  Interested?
+                  %a{:href => "mailto:#{Rails.application.config.settings.contact.email}?subject=Freelance Enquiry", style: "color: white;"} Send me an email!
+                %h3#references References
+                %p Rather than take my word for it, here are a few words others have used to describe me:
+                %blockquote
+                  %p When I first approached Matt about Dvour, it was clear after the first few email exchanges that he was the right person to execute my ideas.  Matt has the rare gift of applying technical knowledge to create simple, yet effective, solutions.  Matt is an excellent communicator that understands the importance of listening to the client.  Matt will take your vision and make it a reality.
+                  %p
+                    Steven Schweibold, Founder of
+                    %a{:href => "http://dvour.com", style: "color: white;"} Dvour
+                %p  
+                %blockquote
+                  %p Matt is an outstanding Ruby on Rails developer.  He knows his subject matter inside out, has a good understanding of what makes an ecommerce business tick, and consistently delivers on his promises.  Great guy to work with - highly recommended.
+                  %p
+                    Shoomon Perry, Founder of
+                    %a{:href => "http://coloursoup.com", style: "color: white;"} Coloursoup
+                %p  
+                %blockquote
+                  %p The service we received from Matt was first class. From taking the brief and writing a specification to delivering the finished job and testing, his professionalism was second to none.
+                  %p
+                    Gareth Hanson - Managing Director,
+                    %a{:href => "http://www.bluestormdesign.co.uk/", style: "color: white;"} Bluestorm New Media Ltd
+                %p  
+                %blockquote
+                  %p Matthew is one of the best programmers I’ve had the fortune to meet.
+                  %p
+                    Jim Neath, Support Engineer at
+                    %a{:href => "http://www.engineyard.com/"} Engine Yard
+                %p  
+                %blockquote
+                  %p Matthew Hall is a developer. A good one. If you don’t believe me, go check some of the sites he’s worked on.
+                  %p
+                    Ben Taylor, Marketing Coordinator at
+                    %a{:href => "http://www.englandsquashandracketball.com/", style: "color: white;"} England Squash & Racketball
+    / Contact Section
+    %section#contact
+      .container
+        = yield :contact_form
+    / Footer
+    %footer.text-center
+      .footer-above
+        .container
+          .row
+            .footer-col.col-md-4
+              %h3 Location
+              %p
+                3481 Melrose Place
+                %br>/
+                Beverly Hills, CA 90210
+            .footer-col.col-md-4
+              %h3 Around the Web
+              %ul.list-inline
+                %li
+                  %a.btn-social.btn-outline{:href => "#"}
+                    %i.fa.fa-fw.fa-facebook
+                %li
+                  %a.btn-social.btn-outline{:href => "#"}
+                    %i.fa.fa-fw.fa-google-plus
+                %li
+                  %a.btn-social.btn-outline{:href => "#"}
+                    %i.fa.fa-fw.fa-twitter
+                %li
+                  %a.btn-social.btn-outline{:href => "#"}
+                    %i.fa.fa-fw.fa-linkedin
+                %li
+                  %a.btn-social.btn-outline{:href => "#"}
+                    %i.fa.fa-fw.fa-dribbble
+            .footer-col.col-md-4
+              %h3 About Freelancer
+              %p
+                Freelance is a free to use, open source Bootstrap theme created by
+                = succeed "." do
+                  %a{:href => "#"} WEB / MOBILE
+      .footer-below
+        .container
+          .row
+            .col-lg-12
+              Copyright © Your Website 2014
+    / Scroll to Top Button (Only visible on small and extra-small screen sizes)
+    .scroll-top.page-scroll.visible-xs.visble-sm
+      %a.btn.btn-primary{:href => "#page-top"}
+        %i.fa.fa-chevron-up
+    / Portfolio Modals
+    #portfolioModal1.portfolio-modal.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+      .modal-content
+        .close-modal{"data-dismiss" => "modal"}
+          .lr
+            .rl
+        .container
+          .row
+            .col-lg-8.col-lg-offset-2
+              .modal-body
+                %h2 Safety Notice
+                %hr.star-primary/
+                %img.img-responsive.img-centered{:alt => "", :src => "img/portfolio/cabin.png"}/
+                %p
+                  Safety Notice is a technologically-advanced system designed to deliver superior communication between family members and providers rendering services to loved ones. Thoughts such as, “Did the van pick up mom on time for her doctor’s appointment?” and “I sure hope the nurse showed up at dad’s house today to help him with his medicine,” are a thing of the past when a service provider utilizes Safety Notice.
+
+                %ul.list-inline.item-details
+                  %li
+                    Client:
+                    %strong
+                      %a{:href => "http://safetynotice.com/", target: '_blank'} safetynotice.com
+                  %li
+                    Date:
+                    %strong
+                      %a{:href => "#"} April 2014
+                  %li
+                    Service:
+                    %strong
+                      %a{:href => "#"} Web Development
+                %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}
+                  %i.fa.fa-times
+                  Close
+    #portfolioModal2.portfolio-modal.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+      .modal-content
+        .close-modal{"data-dismiss" => "modal"}
+          .lr
+            .rl
+        .container
+          .row
+            .col-lg-8.col-lg-offset-2
+              .modal-body
+                %h2 Lawdingo
+                %hr.star-primary/
+                %img.img-responsive.img-centered{:alt => "", :src => "img/portfolio/cake.png"}/
+                %p
+                  Lawdingo is building the plumbing of the legal industry. And by that we mean that we intended Lawdingo to become the default connecting apparatus between people who need lawyers, and lawyers themselves.
+
+
+                %ul.list-inline.item-details
+                  %li
+                    Client:
+                    %strong
+                      %a{:href => "http://lawdingo.com", target: '_blank'} lawdingo.com
+                  %li
+                    Date:
+                    %strong
+                      %a{:href => "#"} April 2014
+                  %li
+                    Service:
+                    %strong
+                      %a{:href => "#"} Web Development
+                %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}
+                  %i.fa.fa-times
+                  Close
+    #portfolioModal3.portfolio-modal.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+      .modal-content
+        .close-modal{"data-dismiss" => "modal"}
+          .lr
+            .rl
+        .container
+          .row
+            .col-lg-8.col-lg-offset-2
+              .modal-body
+                %h2 Sign Video
+                %hr.star-primary/
+                %img.img-responsive.img-centered{:alt => "", :src => "img/portfolio/circus.png"}/
+                %p
+                  SignVideo was established in 2004 and has been going from strength to strength, providing you with instant access to our highly qualified interpreters through our designated call centre.
+                   
+                  Our service is now widely available at many public service organisations and you can find your nearest Access Point by simply entering your postcode into our search facility.
+
+
+                %ul.list-inline.item-details
+                  %li
+                    Client:
+                    %strong
+                      %a{:href => "http://signvideo.co.uk", target: '_blank'} signvideo.co.uk
+                  %li
+                    Date:
+                    %strong
+                      %a{:href => "#"} April 2014
+                  %li
+                    Service:
+                    %strong
+                      %a{:href => "#"} Web Development
+                %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}
+                  %i.fa.fa-times
+                  Close
+    #portfolioModal4.portfolio-modal.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+      .modal-content
+        .close-modal{"data-dismiss" => "modal"}
+          .lr
+            .rl
+        .container
+          .row
+            .col-lg-8.col-lg-offset-2
+              .modal-body
+                %h2 Project Title
+                %hr.star-primary/
+                %img.img-responsive.img-centered{:alt => "", :src => "img/portfolio/foodcircles.png"}/
+                %p
+                  Use this area of the page to describe your project. The icon above is part of a free icon set by
+                  = succeed "." do
+                    %a{:href => "https://sellfy.com/p/8Q9P/jV3VZ/"} Flat Icons
+                %ul.list-inline.item-details
+                  %li
+                    Client:
+                    %strong
+                      %a{:href => "http://foodcircles.net", target: '_blank'} foodcircles.net
+                  %li
+                    Date:
+                    %strong
+                      %a{:href => "#"} April 2014
+                  %li
+                    Service:
+                    %strong
+                      %a{:href => "#"} Web Development
+                %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}
+                  %i.fa.fa-times
+                  Close
+    #portfolioModal5.portfolio-modal.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+      .modal-content
+        .close-modal{"data-dismiss" => "modal"}
+          .lr
+            .rl
+        .container
+          .row
+            .col-lg-8.col-lg-offset-2
+              .modal-body
+                %h2 Livi Rae
+                %hr.star-primary/
+                %img.img-responsive.img-centered{:alt => "", :src => "img/portfolio/safe.png"}/
+                %p
+                  Cynthia Decker and Molly Hopkins first opened LiviRae in 2006. The idea, inspiration, and original concepts for a custom fit lingerie and bra boutique arose, as they often do, with a need to help women feel confident and sexy, not just in Georgia, but around the world.
+
+
+                %ul.list-inline.item-details
+                  %li
+                    Client:
+                    %strong
+                      %a{:href => "https://liviraelingerie.com/", target: '_blank'} https://liviraelingerie.com/
+                  %li
+                    Date:
+                    %strong
+                      %a{:href => "#"} April 2014
+                  %li
+                    Service:
+                    %strong
+                      %a{:href => "#"} Web Development
+                %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}
+                  %i.fa.fa-times
+                  Close
+    #portfolioModal6.portfolio-modal.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+      .modal-content
+        .close-modal{"data-dismiss" => "modal"}
+          .lr
+            .rl
+        .container
+          .row
+            .col-lg-8.col-lg-offset-2
+              .modal-body
+                %h2 Faith Launcher
+                %hr.star-primary/
+                %img.img-responsive.img-centered{:alt => "", :src => "img/portfolio/submarine.png"}/
+                %p
+                  FaithLauncher is the premier crowdfunding platform for faith-based projects. Here, Christian Entrepreneurs, Filmmakers, Musicians, Entertainers, Authors, Ministry Leaders, and many others find like-minded people to support them, raise funds, and breathe life into their vision.
+
+
+                %ul.list-inline.item-details
+                  %li
+                    Client:
+                    %strong
+                      %a{:href => "http://www.faithlauncher.com/", target: '_blank'} www.faithlauncher.com
+                  %li
+                    Date:
+                    %strong
+                      %a{:href => "#"} April 2014
+                  %li
+                    Service:
+                    %strong
+                      %a{:href => "#"} Web Development
+                %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}
+                  %i.fa.fa-times
+                  Close
+    / Bootstrap Core JavaScript
+    /%script{:src => "js/jquery.js"}
+    / Bootstrap Core JavaScript
+    /%script{:src => "js/bootstrap.min.js"}
+    / Plugin JavaScript
+    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"}
+    %script{:src => "js/classie.js"}
+    %script{:src => "js/cbpAnimatedHeader.js"}
+    / Contact Form JavaScript
+    %script{:src => "js/jqBootstrapValidation.js"}
+    %script{:src => "js/contact_me.js"}
+    / Custom Theme JavaScript
+    %script{:src => "js/freelancer.js"}
+
